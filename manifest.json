@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "TapHelpers Token Obtainer",
+  "version": "1.0",
+  "description": "Helps to obtain auth-token from some Telegram games.",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": ["scripting", "activeTab"],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://hamsterkombat.io/*"
+      ],
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js",
+    "type": "module"
+  },
+  "host_permissions": [
+      "https://hamsterkombat.io/*"
+  ]
+}
