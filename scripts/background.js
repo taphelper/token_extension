@@ -2,8 +2,6 @@ const hamsterlog = (async () => {
     if (window.location.href.includes("hamsterkombat.io")) {
         if (localStorage.authToken == undefined) {
             var initdata = window.location.href.split("#tgWebAppData=")[1].split("&tgWebAppVersion=")[0];
-            console.log(initdata);
-            console.log("no token found! requesting...");
             var resp = await fetch("https://api.hamsterkombat.io/auth/auth-by-telegram-webapp", {
                 "headers": {
                     "accept": "application/json",
@@ -27,15 +25,10 @@ const hamsterlog = (async () => {
                 "mode": "cors"
             });
             var b = await resp.json();
-            console.log(b);
             localStorage.authToken = b.authToken;
-            console.log("got token");
-
         }
         document.head.innerHTML = "<style> a {text-decoration: none;padding:1em;border-radius:1em;margin-top:20px;background-color:#24A1DE;font-weight:900;font-size:1.5em;color:#fff;} a:hover {background-color: #5ec2f2} * {user-select:none; font-family: monospace; margin: 0px; padding: 0px;}</style>"
         document.body.innerHTML = "<div style=\"height:100vh;background-color: white;display: flex;justify-content: center;align-items: center;color: black;text-align:center;color:#24A1DE;\"><div><h1 style=\"font-size: 3em;font-weight:900;\">Token Obtainer\n</h1><p style=\"font-size: 1.5em;\">Game: Hamster Kombat</p><br><br><br><a href=\"javascript:prompt('Copy your token:', localStorage.authToken);\">Copy token</a></div></div>";
-
-        console.log("Hamsterlog injected successfully");
     }
 });
 async function hamster(tab){
