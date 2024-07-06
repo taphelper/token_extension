@@ -24,6 +24,7 @@
     "type": "module"
   },
   "host_permissions": [
-      "https://hamsterkombat.io/*"
+      "https://hamsterkombat.io/*",
+	    "https://web.telegram.org/*"
   ]
 }
